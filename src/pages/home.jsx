@@ -15,7 +15,8 @@ const Home = () => {
     }
     try {
       const response = await axios.post(
-        `${serverUrl}url/`,
+        // `${serverUrl}url/`,
+        "http://localhost:3000/url/",
         { url: originalURL },
         {
           headers: {
