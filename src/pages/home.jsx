@@ -15,8 +15,8 @@ const Home = () => {
     }
     try {
       const response = await axios.post(
-        // `${serverUrl}url/`,
-        "http://localhost:3000/url/",
+        `${serverUrl}url/`,
+        // "http://localhost:3000/url/",
         { url: originalURL },
         {
           headers: {
@@ -40,7 +40,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/url/", {
+        const response = await axios.get(`${serverUrl}/url`, {
           headers: {
             "Content-Type": "application/json",
           },
