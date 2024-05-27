@@ -7,30 +7,6 @@ const Home = () => {
   const [error, setError] = useState("");
   const [links, setLinks] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${serverUrl}url/`, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const data = response.data;
-        // console.log(data);
-        const linksArray = data.map((item) => [
-          `http://localhost:5173/${item.shortID}`,
-          item.redirectURL,
-        ]);
-        setLinks(linksArray);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setError("Error fetching data");
-      }
-    };
-
-    fetchData(); // Call the async function immediately
-  }, []);
-
   const handleShortenUrl = async (e) => {
     e.preventDefault();
     if (!originalURL) {
@@ -60,6 +36,30 @@ const Home = () => {
       setError(error);
     }
   };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${serverUrl}url/`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = response.data;
+        // console.log(data);
+        const linksArray = data.map((item) => [
+          `https://url-shortener-ravinainn.onrender.com/url/${item.shortID}`,
+          item.redirectURL,
+        ]);
+        setLinks(linksArray);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError("Error fetching data");
+      }
+    };
+
+    fetchData(); // Call the async function immediately
+  }, [handleShortenUrl]);
+
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div>
