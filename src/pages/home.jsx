@@ -40,7 +40,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${serverUrl}/url`, {
+        const response = await axios.get(`${serverUrl}url/`, {
           headers: {
             "Content-Type": "application/json",
           },
